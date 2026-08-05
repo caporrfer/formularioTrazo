@@ -1,0 +1,18 @@
+services:
+  rpi-dashboard:
+    build: .
+    container_name: rpi-dashboard
+    restart: unless-stopped
+    ports:
+      - "8888:80"
+    depends_on:
+      - rpi-metrics-api
+
+  rpi-metrics-api:
+    build: ./metrics_api
+    container_name: rpi-metrics-api
+    restart: unless-stopped
+    volumes:
+      - /:/hostfs:ro
+      - /mnt/media:/mnt/media:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
