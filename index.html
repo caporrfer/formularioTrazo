@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4efe6" />
+    <title>Cuéntanos tu idea — Formulario de inicio</title>
+    <meta name="description" content="Un breve recorrido para definir juntos la web de tu negocio." />
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body data-submit-endpoint="">
+    <div class="paper-grain" aria-hidden="true"></div>
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Trazo, inicio">
+        <span class="brand-mark">T<span></span></span>
+        <span><strong>TRAZO</strong><small>estudio digital</small></span>
+      </a>
+      <div class="top-progress" aria-label="Progreso del formulario">
+        <span id="progressLabel">Paso 1 de 7</span>
+        <div class="progress-track"><span id="progressBar"></span></div>
+      </div>
+      <div class="top-actions">
+        <a class="models-link" href="./modelos/" target="_blank" rel="noopener">Modelos y precios</a>
+        <button class="text-button" id="saveDraft" type="button">Guardar borrador</button>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section class="form-column">
+        <div class="intro-tag"><i></i> Formulario de inicio · 8–10 min</div>
+        <form id="briefForm" novalidate>
+          <section class="step active" data-step="0" data-name="Tu negocio">
+            <p class="eyebrow">01 · Empezamos por lo esencial</p>
+            <h1>Una buena web empieza<br />por una buena <em>historia.</em></h1>
+            <p class="lead">Cuéntanos quién eres. No hace falta tenerlo todo decidido: este recorrido sirve precisamente para descubrirlo juntos.</p>
+
+            <div class="field-grid two">
+              <label class="field">Nombre del negocio <b>*</b>
+                <input name="businessName" autocomplete="organization" required placeholder="Ej. Casa Pepe" />
+              </label>
+              <label class="field">Persona de contacto <b>*</b>
+                <input name="contactName" autocomplete="name" required placeholder="Tu nombre" />
+              </label>
+              <label class="field">Email <b>*</b>
+                <input name="email" type="email" autocomplete="email" required placeholder="hola@tunegocio.es" />
+              </label>
+              <label class="field">Teléfono
+                <input name="phone" type="tel" autocomplete="tel" placeholder="600 000 000" />
+              </label>
+            </div>
+            <label class="field">¿A qué os dedicáis?
+              <select name="businessType">
+                <option value="">Selecciona una opción</option>
+                <option>Restaurante o bar</option><option>Comercio</option><option>Servicios profesionales</option>
+                <option>Alojamiento o turismo</option><option>Salud y bienestar</option><option>Otro</option>
+              </select>
+            </label>
+            <label class="field">Vuestra historia, en pocas palabras
+              <textarea name="story" rows="5" placeholder="Cómo nació el negocio, quién está detrás, qué os hace especiales…"></textarea>
+              <small>Esta información nos ayudará a dar personalidad a la web.</small>
+            </label>
+          </section>
+
+          <section class="step" data-step="1" data-name="Identidad">
+            <p class="eyebrow">02 · Identidad visual</p>
+            <h2>Que se vea tan vuestro<br />como se <em>siente.</em></h2>
+            <p class="lead">Partimos de lo que ya tenéis o creamos una identidad desde cero.</p>
+
+            <fieldset>
+              <legend>¿Tenéis logo?</legend>
+              <div class="choice-grid three">
+                <label class="choice-card"><input type="radio" name="logoStatus" value="Sí, ya tenemos logo" /><span class="choice-index">A</span><strong>Sí, ya lo tenemos</strong><small>Os enviaremos los archivos</small></label>
+                <label class="choice-card"><input type="radio" name="logoStatus" value="Necesitamos uno a medida" /><span class="choice-index">B</span><strong>Necesitamos uno</strong><small>Queremos hacerlo a medida</small></label>
+                <label class="choice-card"><input type="radio" name="logoStatus" value="No estamos seguros" /><span class="choice-index">C</span><strong>No lo sabemos</strong><small>Preferimos asesoramiento</small></label>
+              </div>
+            </fieldset>
+            <label class="upload-box" for="logoFiles">
+              <span class="upload-symbol">↥</span>
+              <span><strong>Arrastra o selecciona tu logo</strong><small>PNG, JPG, SVG o PDF · máx. 10 MB</small></span>
+              <input id="logoFiles" name="logoFiles" type="file" accept=".png,.jpg,.jpeg,.webp,.svg,.pdf" multiple />
+            </label>
+            <div class="file-list" id="logoFileList"></div>
+
+            <fieldset>
+              <legend>¿Cómo elegimos los colores?</legend>
+              <div class="choice-grid three compact">
+                <label class="choice-card palette-choice"><input type="radio" name="paletteMode" value="Usar los colores del negocio" /><span class="palette-dots"><i class="terracotta"></i><i class="ink"></i><i class="cream"></i></span><strong>Los que ya usamos</strong></label>
+                <label class="choice-card palette-choice"><input type="radio" name="paletteMode" value="Crear una paleta nueva" /><span class="palette-dots"><i class="olive"></i><i class="peach"></i><i class="sand"></i></span><strong>Una paleta nueva</strong></label>
+                <label class="choice-card palette-choice"><input type="radio" name="paletteMode" value="Necesitamos asesoramiento" /><span class="palette-dots"><i class="blue"></i><i class="sky"></i><i class="white"></i></span><strong>Quiero asesoramiento</strong></label>
+              </div>
+            </fieldset>
+            <div class="color-row">
+              <label>Color principal <input type="color" name="primaryColor" value="#b6533b" /></label>
+              <label>Color secundario <input type="color" name="secondaryColor" value="#25352f" /></label>
+              <span class="hint">Puedes probarlos ahora; luego los afinaremos juntos.</span>
+            </div>
+          </section>
+
+          <section class="step" data-step="2" data-name="Estilo">
+            <p class="eyebrow">03 · Dirección creativa</p>
+            <h2>¿Qué estilo habla<br />vuestro <em>idioma?</em></h2>
+            <p class="lead">Elige hasta tres. Puedes mezclar: “moderna y cálida” es una dirección estupenda.</p>
+            <fieldset>
+              <legend class="sr-only">Estilos visuales</legend>
+              <div class="style-grid" id="styleGrid">
+                <label class="style-card modern"><input type="checkbox" name="styles" value="Moderna" /><span class="style-art"><i></i><b></b></span><strong>Moderna</strong><small>Limpia, actual, dinámica</small></label>
+                <label class="style-card elegant"><input type="checkbox" name="styles" value="Elegante" /><span class="style-art"><i>Ag</i></span><strong>Elegante</strong><small>Refinada, serena, cuidada</small></label>
+                <label class="style-card classic"><input type="checkbox" name="styles" value="Clásica" /><span class="style-art"><i>EST.</i><b>1998</b></span><strong>Clásica</strong><small>Tradición y confianza</small></label>
+                <label class="style-card minimal"><input type="checkbox" name="styles" value="Minimalista" /><span class="style-art"><i></i></span><strong>Minimalista</strong><small>Esencial, aireada, precisa</small></label>
+                <label class="style-card casual"><input type="checkbox" name="styles" value="Informal" /><span class="style-art"><i>¡hola!</i></span><strong>Informal</strong><small>Cercana, alegre, espontánea</small></label>
+                <label class="style-card rustic"><input type="checkbox" name="styles" value="Artesanal" /><span class="style-art"><i>hecho</i><b>a mano</b></span><strong>Artesanal</strong><small>Natural, humana, auténtica</small></label>
+              </div>
+            </fieldset>
+            <label class="field">¿Tienes webs de referencia?
+              <textarea name="references" rows="4" placeholder="Pega aquí enlaces o cuéntanos qué te gusta de otras webs…"></textarea>
+            </label>
+            <fieldset>
+              <legend>Tipografía preferida</legend>
+              <div class="type-choices">
+                <label><input type="radio" name="typography" value="Con carácter / serif" /><span class="serif">Aa</span><strong>Con carácter</strong><small>Editorial y expresiva</small></label>
+                <label><input type="radio" name="typography" value="Limpia / sans serif" /><span class="sans">Aa</span><strong>Limpia</strong><small>Actual y directa</small></label>
+                <label><input type="radio" name="typography" value="Manuscrita / cercana" /><span class="script">Aa</span><strong>Manuscrita</strong><small>Cercana y personal</small></label>
+                <label><input type="radio" name="typography" value="Prefiero asesoramiento" /><span class="mixed">A<span>a</span></span><strong>Asesoradme</strong><small>Elegiremos la adecuada</small></label>
+              </div>
+            </fieldset>
+          </section>
+
+          <section class="step" data-step="3" data-name="Contenido">
+            <p class="eyebrow">04 · Arquitectura de la web</p>
+            <h2>¿Qué espacios necesita<br />vuestra <em>web?</em></h2>
+            <p class="lead">Selecciona todos los que puedan ser útiles. Después ordenaremos y simplificaremos la estructura.</p>
+            <fieldset>
+              <legend>Secciones principales</legend>
+              <div class="check-list" id="sectionsList">
+                <label><input type="checkbox" name="sections" value="Inicio" checked /><span>Inicio</span><small>La puerta de entrada</small></label>
+                <label><input type="checkbox" name="sections" value="Quiénes somos" /><span>Quiénes somos</span><small>Historia y equipo</small></label>
+                <label><input type="checkbox" name="sections" value="Servicios" /><span>Servicios</span><small>Lo que ofrecéis</small></label>
+                <label><input type="checkbox" name="sections" value="Carta o menú" /><span>Carta o menú</span><small>Oferta gastronómica</small></label>
+                <label><input type="checkbox" name="sections" value="Catálogo de productos" /><span>Catálogo</span><small>Productos sin compra</small></label>
+                <label><input type="checkbox" name="sections" value="Tienda online" /><span>Tienda online</span><small>Venta y pagos</small></label>
+                <label><input type="checkbox" name="sections" value="Reservas" /><span>Reservas</span><small>Mesa, cita o estancia</small></label>
+                <label><input type="checkbox" name="sections" value="Pedidos online" /><span>Pedidos online</span><small>Recogida o reparto</small></label>
+                <label><input type="checkbox" name="sections" value="Galería de imágenes" /><span>Galería</span><small>Fotos del espacio</small></label>
+                <label><input type="checkbox" name="sections" value="Opiniones de clientes" /><span>Opiniones</span><small>Reseñas destacadas</small></label>
+                <label><input type="checkbox" name="sections" value="Promociones" /><span>Promociones</span><small>Ofertas puntuales</small></label>
+                <label><input type="checkbox" name="sections" value="Eventos" /><span>Eventos</span><small>Agenda y celebraciones</small></label>
+                <label><input type="checkbox" name="sections" value="Preguntas frecuentes" /><span>Preguntas frecuentes</span><small>Resolver dudas</small></label>
+                <label><input type="checkbox" name="sections" value="Blog o noticias" /><span>Blog o noticias</span><small>Contenido y novedades</small></label>
+                <label><input type="checkbox" name="sections" value="Contacto" checked /><span>Contacto</span><small>Mapa y datos</small></label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Fotografías para la web</legend>
+              <div class="choice-grid three">
+                <label class="choice-card"><input type="radio" name="photosStatus" value="Tenemos fotos propias" /><span class="choice-index">01</span><strong>Tenemos fotos</strong><small>Listas para compartir</small></label>
+                <label class="choice-card"><input type="radio" name="photosStatus" value="Necesitamos nuevas fotos" /><span class="choice-index">02</span><strong>Necesitamos fotos</strong><small>Queremos orientación</small></label>
+                <label class="choice-card"><input type="radio" name="photosStatus" value="Mezclar propias y banco" /><span class="choice-index">03</span><strong>Una mezcla</strong><small>Propias y seleccionadas</small></label>
+              </div>
+            </fieldset>
+            <label class="upload-box" for="photoFiles">
+              <span class="upload-symbol">↥</span>
+              <span><strong>Comparte algunas fotos de referencia</strong><small>PNG, JPG o WEBP · varios archivos</small></span>
+              <input id="photoFiles" name="photoFiles" type="file" accept="image/png,image/jpeg,image/webp" multiple />
+            </label>
+            <div class="file-list" id="photoFileList"></div>
+          </section>
+
+          <section class="step" data-step="4" data-name="Funciones">
+            <p class="eyebrow">05 · Funcionalidades</p>
+            <h2>Todo lo que la web<br />puede hacer <em>por vosotros.</em></h2>
+            <p class="lead">Marca las herramientas que podrían facilitar el día a día de tu negocio.</p>
+            <fieldset>
+              <legend>Opciones para hostelería y comercios</legend>
+              <div class="feature-list">
+                <label><input type="checkbox" name="features" value="Carta digital" /><span><b>Carta digital</b><small>Menú fácil de actualizar</small></span></label>
+                <label><input type="checkbox" name="features" value="Carta mediante código QR" /><span><b>Código QR</b><small>Acceso directo desde mesa</small></span></label>
+                <label><input type="checkbox" name="features" value="Carta con precios" /><span><b>Precios visibles</b><small>Siempre claros y actuales</small></span></label>
+                <label><input type="checkbox" name="features" value="Información sobre alérgenos" /><span><b>Alérgenos</b><small>Información por producto</small></span></label>
+                <label><input type="checkbox" name="features" value="Filtros por tipo de plato" /><span><b>Filtros</b><small>Vegano, sin gluten, picante…</small></span></label>
+                <label><input type="checkbox" name="features" value="Promociones o menú del día" /><span><b>Menú del día</b><small>Promociones destacadas</small></span></label>
+                <label><input type="checkbox" name="features" value="Gestión de eventos" /><span><b>Gestión de eventos</b><small>Agenda o solicitudes</small></span></label>
+                <label><input type="checkbox" name="features" value="Bonos o tarjetas regalo" /><span><b>Bonos regalo</b><small>Venta de experiencias</small></span></label>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Redes sociales</legend>
+              <div class="social-grid">
+                <label class="field"><span>Instagram</span><input name="instagram" placeholder="@tunegocio" /></label>
+                <label class="field"><span>Facebook</span><input name="facebook" placeholder="facebook.com/…" /></label>
+                <label class="field"><span>TikTok</span><input name="tiktok" placeholder="@tunegocio" /></label>
+                <label class="field"><span>Otra</span><input name="otherSocial" placeholder="LinkedIn, YouTube…" /></label>
+              </div>
+            </fieldset>
+            <div class="included-note"><span>✓</span><p><strong>Diseño adaptado a móvil incluido</strong>La web se verá y funcionará perfectamente en teléfono, tablet y ordenador.</p></div>
+          </section>
+
+          <section class="step" data-step="5" data-name="Dominio y soporte">
+            <p class="eyebrow">06 · Puesta en marcha</p>
+            <h2>El nombre, la parte legal<br />y lo que viene <em>después.</em></h2>
+            <p class="lead">Nos ocupamos también de los detalles técnicos para que la web esté disponible 24/7.</p>
+
+            <fieldset>
+              <legend>Dirección de la web (dominio)</legend>
+              <div class="domain-box"><span>www.</span><input name="domain" aria-label="Dominio deseado" placeholder="restaurantecasapepe" /><span>.es</span></div>
+              <label class="inline-check"><input type="checkbox" name="domainHelp" value="Necesito ayuda para elegir el dominio" /><span>Necesito ayuda para elegir o comprobar el dominio</span></label>
+            </fieldset>
+            <fieldset>
+              <legend>Textos legales</legend>
+              <div class="choice-grid three compact">
+                <label class="choice-card"><input type="radio" name="legal" value="Necesito que preparéis los textos legales" /><span class="choice-index">A</span><strong>Preparadlos vosotros</strong><small>Aviso legal, privacidad y cookies</small></label>
+                <label class="choice-card"><input type="radio" name="legal" value="Ya tengo textos legales" /><span class="choice-index">B</span><strong>Ya los tengo</strong><small>Compartiré los documentos</small></label>
+                <label class="choice-card"><input type="radio" name="legal" value="Necesito asesoramiento legal" /><span class="choice-index">C</span><strong>No estoy seguro</strong><small>Revisamos qué necesitas</small></label>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Mantenimiento de la web</legend>
+              <div class="maintenance-options">
+                <label><input type="radio" name="maintenance" value="Mantenimiento continuo" /><span><b>Quiero mantenimiento continuo</b><small>Actualizaciones, copias de seguridad, soporte y pequeños cambios.</small></span><em>Recomendado</em></label>
+                <label><input type="radio" name="maintenance" value="Gestionaremos la web internamente" /><span><b>La gestionaremos nosotros</b><small>Necesitaremos acceso y una breve formación.</small></span></label>
+                <label><input type="radio" name="maintenance" value="Decidir más adelante" /><span><b>Lo decidiremos más adelante</b><small>Comentamos las opciones en la propuesta.</small></span></label>
+              </div>
+            </fieldset>
+          </section>
+
+          <section class="step" data-step="6" data-name="Últimos detalles">
+            <p class="eyebrow">07 · Últimos detalles</p>
+            <h2>Ya podemos imaginar<br />vuestra nueva <em>web.</em></h2>
+            <p class="lead">Solo falta cualquier detalle que quieras contarnos. Después revisaremos el formulario y nos pondremos en contacto.</p>
+            <div class="field-grid two">
+              <label class="field">¿Cuándo os gustaría publicarla?
+                <select name="timeline"><option value="">Sin fecha concreta</option><option>Lo antes posible</option><option>En 1–2 meses</option><option>En 3–6 meses</option><option>Más adelante</option></select>
+              </label>
+              <label class="field">Presupuesto orientativo
+                <select name="budget"><option value="">Prefiero comentarlo</option><option>Menos de 1.000 €</option><option>1.000–2.500 €</option><option>2.500–5.000 €</option><option>Más de 5.000 €</option></select>
+              </label>
+            </div>
+            <label class="field">¿Hay algo más que debamos saber?
+              <textarea name="notes" rows="6" placeholder="Ideas, necesidades especiales, integraciones, dudas…"></textarea>
+            </label>
+            <div class="summary" id="summary"></div>
+            <label class="consent"><input type="checkbox" name="consent" required /><span>Acepto que se utilicen estos datos para preparar la propuesta y contactar conmigo. <b>*</b></span></label>
+          </section>
+
+          <div class="form-error" id="formError" role="alert"></div>
+          <nav class="form-nav" aria-label="Navegación del formulario">
+            <button class="button secondary" id="prevButton" type="button">← Anterior</button>
+            <button class="button primary" id="nextButton" type="button">Continuar <span>→</span></button>
+            <button class="button primary submit" id="submitButton" type="submit">Enviar formulario <span>→</span></button>
+          </nav>
+        </form>
+
+        <section class="success" id="success" aria-live="polite">
+          <div class="success-seal">✓</div>
+          <p class="eyebrow">Formulario enviado</p>
+          <h2>Gracias por abrirnos<br />la puerta a tu <em>idea.</em></h2>
+          <p id="successMessage">Tu formulario se ha preparado correctamente.</p>
+          <div class="reference">Referencia <strong id="referenceCode"></strong></div>
+          <button class="button secondary" id="newBrief" type="button">Enviar otro formulario</button>
+        </section>
+      </section>
+
+      <aside class="preview-column" aria-label="Vista previa de tu proyecto">
+        <div class="preview-kicker"><span>Vista previa</span><i>En directo</i></div>
+        <article class="site-preview" id="sitePreview">
+          <div class="preview-nav"><span id="previewLogo">TU LOGO</span><i></i><i></i><i></i><button>RESERVAR</button></div>
+          <div class="preview-hero">
+            <small>BIENVENIDOS A</small>
+            <h3 id="previewName">Tu negocio</h3>
+            <p id="previewTagline">Una historia que merece ser contada.</p>
+            <span>DESCUBRIR →</span>
+          </div>
+          <div class="preview-bottom"><p>Hecho con intención</p><div><b></b><b></b><b></b></div></div>
+        </article>
+        <p class="preview-caption">Esta maqueta cambia con tus elecciones de color, tipografía y estilo.</p>
+        <div class="help-card"><span>?</span><p><strong>¿Tienes alguna duda?</strong>No te preocupes por acertar en todo. Te asesoraremos en cada decisión.</p></div>
+      </aside>
+    </main>
+
+    <div class="toast" id="toast" role="status"></div>
+    <script src="./assets/app.js" defer></script>
+  </body>
+</html>
