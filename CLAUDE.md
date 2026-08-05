@@ -26,7 +26,7 @@ El frontend JS llama a `/api/metrics` cada 15 segundos y actualiza las barras de
 
 ```
 rpi-dashboard/
-├── html/index.html          # Frontend — cambios requieren rebuild
+├── index.html               # Frontend y entrada para GitHub Pages
 ├── nginx.conf               # Proxy /api/ → rpi-metrics-api:5000
 ├── Dockerfile               # nginx con nginx.conf + html
 ├── docker-compose.yml       # Orquesta rpi-dashboard + rpi-metrics-api
@@ -58,7 +58,7 @@ docker logs rpi-metrics-api -f
 curl http://localhost:8888/api/metrics
 ```
 
-> **Importante**: Tanto `html/index.html` como `metrics_api/app.py` quedan grabados en sus respectivas imágenes. Cualquier cambio requiere **rebuildar con `--build`**, no basta con `docker restart`.
+> **Importante**: Tanto `index.html` como `metrics_api/app.py` quedan grabados en sus respectivas imágenes. Cualquier cambio requiere **rebuildar con `--build`**, no basta con `docker restart`.
 
 ## Servicios registrados en el dashboard
 
@@ -77,7 +77,7 @@ curl http://localhost:8888/api/metrics
 
 ## Cómo añadir un nuevo servicio
 
-Editar `html/index.html` y añadir un bloque `<a class="card">` dentro del `<div class="grid">`:
+Editar `index.html` y añadir un bloque `<a class="card">` dentro del `<div class="grid">`:
 
 ```html
 <a class="card" href="http://192.168.0.87:PUERTO" target="_blank" rel="noopener">
