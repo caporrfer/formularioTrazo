@@ -10,6 +10,10 @@ const preview = document.querySelector('#sitePreview');
 const previewName = document.querySelector('#previewName');
 const previewTagline = document.querySelector('#previewTagline');
 const summary = document.querySelector('#summary');
+const primaryColor = form.elements.primaryColor;
+const secondaryColor = form.elements.secondaryColor;
+const primaryColorValue = document.querySelector('#primaryColorValue');
+const secondaryColorValue = document.querySelector('#secondaryColorValue');
 const draftKey = 'trazo-brief-draft-v1';
 const submissionEndpoint = document.body.dataset.submitEndpoint?.trim() || '';
 let currentStep = 0;
@@ -25,6 +29,29 @@ const showToast = (message) => {
 
 const value = (name) => form.elements[name]?.value?.trim() || '';
 const checkedValues = (name) => [...form.querySelectorAll(`[name="${name}"]:checked`)].map((input) => input.value);
+const palettes = {
+  Terracota: ['#b6533b', '#25352f'],
+  Natural: ['#6f7551', '#3b4432'],
+  Atlántica: ['#26465a', '#8bb4bf'],
+  Editorial: ['#724137', '#d6b878'],
+};
+
+const syncColorControls = () => {
+  primaryColorValue.textContent = primaryColor.value.toUpperCase();
+  secondaryColorValue.textContent = secondaryColor.value.toUpperCase();
+  const matchingPalette = Object.entries(palettes).find(([, colors]) => colors[0] === primaryColor.value && colors[1] === secondaryColor.value)?.[0];
+  form.querySelectorAll('[name="colorPalette"]').forEach((input) => { input.checked = input.value === matchingPalette; });
+};
+
+form.querySelectorAll('[name="colorPalette"]').forEach((input) => input.addEventListener('change', () => {
+  const [primary, secondary] = palettes[input.value];
+  primaryColor.value = primary;
+  secondaryColor.value = secondary;
+  syncColorControls();
+  updatePreview();
+}));
+primaryColor.addEventListener('input', syncColorControls);
+secondaryColor.addEventListener('input', syncColorControls);
 
 const showStep = (index) => {
   currentStep = Math.max(0, Math.min(steps.length - 1, index));
@@ -113,7 +140,7 @@ const buildPayload = () => ({
   },
   identity: {
     logoStatus: value('logoStatus'), paletteMode: value('paletteMode'), primaryColor: value('primaryColor'),
-    secondaryColor: value('secondaryColor'), styles: checkedValues('styles'), typography: value('typography'),
+    secondaryColor: value('secondaryColor'), colorPalette: value('colorPalette'), styles: checkedValues('styles'), typography: value('typography'),
     references: value('references'),
   },
   content: { sections: checkedValues('sections'), photosStatus: value('photosStatus') },
@@ -121,7 +148,7 @@ const buildPayload = () => ({
   social: { instagram: value('instagram'), facebook: value('facebook'), tiktok: value('tiktok'), other: value('otherSocial') },
   launch: {
     domain: value('domain'), domainHelp: form.elements.domainHelp.checked, legal: value('legal'),
-    maintenance: value('maintenance'), timeline: value('timeline'), budget: value('budget'), notes: value('notes'),
+    maintenance: value('maintenance'), timeline: value('timeline'), notes: value('notes'),
     responsive: true, availability: '24/7',
   },
 });
@@ -169,6 +196,7 @@ const loadDraft = () => {
       else field.value = draft[field.name];
     });
     showToast('Hemos recuperado tu borrador');
+    syncColorControls();
     updatePreview();
   } catch { localStorage.removeItem(draftKey); }
 };
@@ -238,4 +266,5 @@ form.addEventListener('submit', async (event) => {
 document.querySelector('#newBrief').addEventListener('click', () => window.location.reload());
 loadDraft();
 showStep(0);
+syncColorControls();
 updatePreview();

@@ -84,32 +84,45 @@
 
             <fieldset>
               <legend>¿Cómo elegimos los colores?</legend>
-              <div class="choice-grid three compact">
-                <label class="choice-card palette-choice"><input type="radio" name="paletteMode" value="Usar los colores del negocio" /><span class="palette-dots"><i class="terracotta"></i><i class="ink"></i><i class="cream"></i></span><strong>Los que ya usamos</strong></label>
-                <label class="choice-card palette-choice"><input type="radio" name="paletteMode" value="Crear una paleta nueva" /><span class="palette-dots"><i class="olive"></i><i class="peach"></i><i class="sand"></i></span><strong>Una paleta nueva</strong></label>
-                <label class="choice-card palette-choice"><input type="radio" name="paletteMode" value="Necesitamos asesoramiento" /><span class="palette-dots"><i class="blue"></i><i class="sky"></i><i class="white"></i></span><strong>Quiero asesoramiento</strong></label>
+              <p class="fieldset-help">Elige el punto de partida que mejor encaje contigo. Podrás probar y ajustar los colores justo debajo.</p>
+              <div class="choice-grid three compact palette-mode-grid">
+                <label class="choice-card palette-choice"><input type="radio" name="paletteMode" value="Usar los colores del negocio" /><span class="palette-dots"><i class="terracotta"></i><i class="ink"></i><i class="cream"></i></span><strong>Mantener mis colores</strong><small>Partimos de vuestra identidad actual</small></label>
+                <label class="choice-card palette-choice"><input type="radio" name="paletteMode" value="Crear una paleta nueva" /><span class="palette-dots"><i class="olive"></i><i class="peach"></i><i class="sand"></i></span><strong>Explorar algo nuevo</strong><small>Buscamos una combinación diferente</small></label>
+                <label class="choice-card palette-choice"><input type="radio" name="paletteMode" value="Necesitamos asesoramiento" /><span class="palette-dots"><i class="blue"></i><i class="sky"></i><i class="white"></i></span><strong>Quiero asesoramiento</strong><small>Elegimos la paleta juntos</small></label>
               </div>
             </fieldset>
-            <div class="color-row">
-              <label>Color principal <input type="color" name="primaryColor" value="#b6533b" /></label>
-              <label>Color secundario <input type="color" name="secondaryColor" value="#25352f" /></label>
-              <span class="hint">Puedes probarlos ahora; luego los afinaremos juntos.</span>
+            <div class="palette-builder">
+              <div class="palette-builder-heading">
+                <div><span>Combinaciones sugeridas</span><strong>Elige una paleta para verla en la muestra</strong></div>
+                <small>También puedes personalizarla</small>
+              </div>
+              <div class="palette-presets">
+                <label><input type="radio" name="colorPalette" value="Terracota" checked /><span class="preset-colors"><i style="--swatch:#b6533b"></i><i style="--swatch:#25352f"></i></span><strong>Terracota</strong></label>
+                <label><input type="radio" name="colorPalette" value="Natural" /><span class="preset-colors"><i style="--swatch:#6f7551"></i><i style="--swatch:#3b4432"></i></span><strong>Natural</strong></label>
+                <label><input type="radio" name="colorPalette" value="Atlántica" /><span class="preset-colors"><i style="--swatch:#26465a"></i><i style="--swatch:#8bb4bf"></i></span><strong>Atlántica</strong></label>
+                <label><input type="radio" name="colorPalette" value="Editorial" /><span class="preset-colors"><i style="--swatch:#724137"></i><i style="--swatch:#d6b878"></i></span><strong>Editorial</strong></label>
+              </div>
+              <div class="color-row">
+                <label class="color-control" for="primaryColor"><span><small>Color principal</small><strong id="primaryColorValue">#B6533B</strong></span><input id="primaryColor" type="color" name="primaryColor" value="#b6533b" /></label>
+                <label class="color-control" for="secondaryColor"><span><small>Color secundario</small><strong id="secondaryColorValue">#25352F</strong></span><input id="secondaryColor" type="color" name="secondaryColor" value="#25352f" /></label>
+              </div>
+              <p class="palette-hint">Estos colores son un punto de partida; los afinaremos juntos antes de diseñar la web.</p>
             </div>
           </section>
 
           <section class="step" data-step="2" data-name="Estilo">
             <p class="eyebrow">03 · Dirección creativa</p>
-            <h2>¿Qué estilo habla<br />vuestro <em>idioma?</em></h2>
+            <h2 class="style-heading"><span>¿Qué estilo habla</span><span>vuestro <em>idioma?</em></span></h2>
             <p class="lead">Elige hasta tres. Puedes mezclar: “moderna y cálida” es una dirección estupenda.</p>
             <fieldset>
               <legend class="sr-only">Estilos visuales</legend>
               <div class="style-grid" id="styleGrid">
-                <label class="style-card modern"><input type="checkbox" name="styles" value="Moderna" /><span class="style-art"><i></i><b></b></span><strong>Moderna</strong><small>Limpia, actual, dinámica</small></label>
-                <label class="style-card elegant"><input type="checkbox" name="styles" value="Elegante" /><span class="style-art"><i>Ag</i></span><strong>Elegante</strong><small>Refinada, serena, cuidada</small></label>
-                <label class="style-card classic"><input type="checkbox" name="styles" value="Clásica" /><span class="style-art"><i>EST.</i><b>1998</b></span><strong>Clásica</strong><small>Tradición y confianza</small></label>
-                <label class="style-card minimal"><input type="checkbox" name="styles" value="Minimalista" /><span class="style-art"><i></i></span><strong>Minimalista</strong><small>Esencial, aireada, precisa</small></label>
-                <label class="style-card casual"><input type="checkbox" name="styles" value="Informal" /><span class="style-art"><i>¡hola!</i></span><strong>Informal</strong><small>Cercana, alegre, espontánea</small></label>
-                <label class="style-card rustic"><input type="checkbox" name="styles" value="Artesanal" /><span class="style-art"><i>hecho</i><b>a mano</b></span><strong>Artesanal</strong><small>Natural, humana, auténtica</small></label>
+                <label class="style-card modern"><input type="checkbox" name="styles" value="Moderna" /><span class="style-art" aria-hidden="true"><i>Trazo</i><b>01 — Digital</b></span><strong>Moderna</strong><small>Limpia, actual, dinámica</small></label>
+                <label class="style-card elegant"><input type="checkbox" name="styles" value="Elegante" /><span class="style-art" aria-hidden="true"><i>Trazo</i><b>Estudio</b></span><strong>Elegante</strong><small>Refinada, serena, cuidada</small></label>
+                <label class="style-card classic"><input type="checkbox" name="styles" value="Clásica" /><span class="style-art" aria-hidden="true"><i>Trazo</i><b>Desde 1998</b></span><strong>Clásica</strong><small>Tradición y confianza</small></label>
+                <label class="style-card minimal"><input type="checkbox" name="styles" value="Minimalista" /><span class="style-art" aria-hidden="true"><i>Trazo</i><b>Esencial</b></span><strong>Minimalista</strong><small>Esencial, aireada, precisa</small></label>
+                <label class="style-card casual"><input type="checkbox" name="styles" value="Informal" /><span class="style-art" aria-hidden="true"><i>Trazo</i><b>¡Hola!</b></span><strong>Informal</strong><small>Cercana, alegre, espontánea</small></label>
+                <label class="style-card rustic"><input type="checkbox" name="styles" value="Artesanal" /><span class="style-art" aria-hidden="true"><i>Trazo</i><b>Hecho a mano</b></span><strong>Artesanal</strong><small>Natural, humana, auténtica</small></label>
               </div>
             </fieldset>
             <label class="field">¿Tienes webs de referencia?
@@ -228,12 +241,9 @@
             <p class="eyebrow">07 · Últimos detalles</p>
             <h2>Ya podemos imaginar<br />vuestra nueva <em>web.</em></h2>
             <p class="lead">Solo falta cualquier detalle que quieras contarnos. Después revisaremos el formulario y nos pondremos en contacto.</p>
-            <div class="field-grid two">
+            <div class="field-grid">
               <label class="field">¿Cuándo os gustaría publicarla?
                 <select name="timeline"><option value="">Sin fecha concreta</option><option>Lo antes posible</option><option>En 1–2 meses</option><option>En 3–6 meses</option><option>Más adelante</option></select>
-              </label>
-              <label class="field">Presupuesto orientativo
-                <select name="budget"><option value="">Prefiero comentarlo</option><option>Menos de 1.000 €</option><option>1.000–2.500 €</option><option>2.500–5.000 €</option><option>Más de 5.000 €</option></select>
               </label>
             </div>
             <label class="field">¿Hay algo más que debamos saber?
