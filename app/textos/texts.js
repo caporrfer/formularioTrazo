@@ -67,8 +67,12 @@ textsForm.addEventListener('submit', async event => {
   if (newTexts.some(item => !item.title || !item.text)) { submitError.textContent = 'Completa el título y el contenido de cada texto nuevo.'; return; }
   const button = document.querySelector('#submitButton'); button.disabled = true; button.textContent = 'Guardando…';
   try {
-    const response = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ identifier: project.identifier, changes, additions: newTexts }) });
-    const data = await response.json(); if (!response.ok) throw new Error(data.error || 'No se han podido guardar los cambios.');
+    const payload = { identifier: project.identifier, changes, additions: newTexts };
+    let data = await window.trazoData?.submitTextRevision(payload);
+    if (!data) {
+      const response = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(payload) });
+      data = await response.json(); if (!response.ok) throw new Error(data.error || 'No se han podido guardar los cambios.');
+    }
     document.querySelector('#reference').textContent = data.reference; editor.hidden = true; success.hidden = false; window.scrollTo({ top: 0, behavior: 'smooth' });
   } catch (error) { submitError.textContent = error.message; }
   finally { button.disabled = false; button.innerHTML = 'Enviar cambios <span>→</span>'; }

@@ -2,15 +2,19 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#f4efe6" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#101010" />
   <title>Revisión de textos · Trazo</title>
   <meta name="description" content="Revisa y propón cambios en los textos de tu página web." />
-  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="../assets/trazo-mark.svg" type="image/svg+xml" />
+  <link rel="manifest" href="../manifest.webmanifest" />
   <link rel="stylesheet" href="./texts.css?v=20260825-1" />
+  <link rel="stylesheet" href="./texts-mobile.css?v=1" />
 </head>
 <body>
-  <header class="topbar"><a class="brand" href="../"><span class="mark">T<i></i></span><span><strong>TRAZO</strong><small>estudio digital</small></span></a><span>Revisión de contenidos</span></header>
+  <div class="app-splash" aria-hidden="true"><div class="splash-lockup"><img src="../assets/trazo-mark.svg" alt="" /><span>Trazo · Copy Desk</span><i class="splash-line"></i></div></div>
+  <section class="auth-sheet" id="authSheet" aria-label="Acceso a Trazo"><div class="auth-card"><img class="auth-mark" src="../assets/trazo-mark.svg" alt="Trazo" /><h2>Revisa tus textos.</h2><p>Identifícate para que cada propuesta quede vinculada a tu proyecto.</p><div class="auth-actions"><button id="googleLogin" type="button">Continuar con Google</button></div><form class="auth-email" id="magicLinkForm"><input id="authEmail" type="email" autocomplete="email" placeholder="tu@email.com" required /><button>Enviar enlace</button></form><button class="auth-preview" id="previewAccess" type="button">Explorar sin cuenta</button><p class="auth-status" id="authStatus" role="status"></p></div></section>
+  <header class="topbar"><a class="brand" href="../"><img src="../assets/trazo-mark.svg" alt="" /><span><strong>TRAZO</strong><small>Copy desk</small></span></a><span>Revisión de contenidos</span><button class="account-button" id="accountButton" type="button">Acceder</button></header>
   <main>
     <section class="access" id="access">
       <p class="kicker">Área de clientes</p>
@@ -31,6 +35,8 @@
 
     <section class="success" id="success" hidden><p class="kicker">Propuesta recibida</p><h1>Gracias por revisar<br />cada palabra.</h1><p class="lead">Hemos guardado tus cambios. Los revisaremos antes de aplicarlos a la web.</p><div class="reference"><small>Referencia</small><strong id="reference"></strong></div><button id="reviewAgain" type="button">Volver a los textos</button></section>
   </main>
-  <script src="./texts.js?v=20260825-2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../assets/supabase-config.js"></script><script src="../assets/supabase-client.js"></script><script src="../assets/auth-ui.js"></script>
+  <script src="./texts.js?v=3"></script>
 </body>
 </html>

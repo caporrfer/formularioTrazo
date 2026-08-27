@@ -1,0 +1,12 @@
+{
+  "name": "Trazo · Brief de proyecto",
+  "short_name": "Trazo",
+  "description": "Define y revisa tu proyecto web con Trazo.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#101010",
+  "theme_color": "#101010",
+  "icons": [{ "src": "./assets/trazo-mark.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}
