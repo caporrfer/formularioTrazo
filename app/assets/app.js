@@ -209,17 +209,13 @@ form.addEventListener('submit', async (event) => {
   formError.classList.remove('visible');
   const body = new FormData();
   const submission = buildPayload();
-  const files = [...document.querySelector('#logoFiles').files, ...document.querySelector('#photoFiles').files];
   body.append('payload', JSON.stringify(submission));
-  files.forEach((file) => body.append('files', file));
+  [...document.querySelector('#logoFiles').files, ...document.querySelector('#photoFiles').files].forEach((file) => body.append('files', file));
   try {
-    let result = await window.trazoData?.submitBrief(submission, files);
-    if (!result) {
-      if (!submissionEndpoint) throw new Error('El servicio de recepción no está configurado');
-      const response = await fetch(submissionEndpoint, { method: 'POST', body, headers: { Accept: 'application/json' } });
-      result = await response.json().catch(() => ({}));
-      if (!response.ok) throw new Error(result.error || result.detail || 'No se ha podido enviar el formulario');
-    }
+    if (!submissionEndpoint) throw new Error('El servicio de recepción no está configurado');
+    const response = await fetch(submissionEndpoint, { method: 'POST', body, headers: { Accept: 'application/json' } });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(result.error || result.detail || 'No se ha podido enviar el formulario');
     result.reference ||= `WEB-${Date.now().toString(36).toUpperCase()}`;
     const successMessage = 'Hemos recibido toda la información. La revisaremos con calma y nos pondremos en contacto contigo.';
     localStorage.removeItem(draftKey);

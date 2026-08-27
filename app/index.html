@@ -16,17 +16,6 @@
   </head>
   <body data-submit-endpoint="./api/submissions">
     <div class="app-splash" aria-hidden="true"><div class="splash-lockup"><img src="./assets/trazo-mark.svg" alt="" /><span>Trazo · Project OS</span><i class="splash-line"></i></div></div>
-    <section class="auth-sheet" id="authSheet" aria-label="Acceso a Trazo">
-      <div class="auth-card">
-        <img class="auth-mark" src="./assets/trazo-mark.svg" alt="Trazo" />
-        <h2>Tu proyecto,<br />siempre contigo.</h2>
-        <p>Accede para guardar el brief, revisar los textos y continuar desde cualquier dispositivo.</p>
-        <div class="auth-actions"><button id="googleLogin" type="button">Continuar con Google</button></div>
-        <form class="auth-email" id="magicLinkForm"><input id="authEmail" type="email" autocomplete="email" placeholder="tu@email.com" required /><button>Enviar enlace</button></form>
-        <button class="auth-preview" id="previewAccess" type="button">Explorar sin cuenta</button>
-        <p class="auth-status" id="authStatus" role="status"></p>
-      </div>
-    </section>
     <div class="paper-grain" aria-hidden="true"></div>
     <header class="topbar">
       <a class="brand" href="./" aria-label="Trazo, inicio">
@@ -41,7 +30,6 @@
         <a class="models-link services-link" href="./servicios/">Servicios</a>
         <a class="models-link" href="./modelos/">Modelos y precios</a>
         <button class="text-button" id="saveDraft" type="button">Guardar borrador</button>
-        <button class="account-button" id="accountButton" type="button">Acceder</button>
       </div>
     </header>
 
@@ -308,10 +296,7 @@
     </main>
 
     <div class="toast" id="toast" role="status"></div>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
-    <script src="./assets/supabase-config.js" defer></script>
-    <script src="./assets/supabase-client.js" defer></script>
-    <script src="./assets/auth-ui.js" defer></script>
+    <script src="./assets/pwa.js" defer></script>
     <script src="./assets/app.js?v=3" defer></script>
   </body>
 </html>

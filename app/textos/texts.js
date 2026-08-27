@@ -68,11 +68,8 @@ textsForm.addEventListener('submit', async event => {
   const button = document.querySelector('#submitButton'); button.disabled = true; button.textContent = 'Guardando…';
   try {
     const payload = { identifier: project.identifier, changes, additions: newTexts };
-    let data = await window.trazoData?.submitTextRevision(payload);
-    if (!data) {
-      const response = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(payload) });
-      data = await response.json(); if (!response.ok) throw new Error(data.error || 'No se han podido guardar los cambios.');
-    }
+    const response = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(payload) });
+    const data = await response.json(); if (!response.ok) throw new Error(data.error || 'No se han podido guardar los cambios.');
     document.querySelector('#reference').textContent = data.reference; editor.hidden = true; success.hidden = false; window.scrollTo({ top: 0, behavior: 'smooth' });
   } catch (error) { submitError.textContent = error.message; }
   finally { button.disabled = false; button.innerHTML = 'Enviar cambios <span>→</span>'; }
