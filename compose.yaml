@@ -1,0 +1,46 @@
+name: formulario-trazo
+
+services:
+  trazo:
+    image: formulario-trazo:portable
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "${TRAZO_BIND:-127.0.0.1}:${TRAZO_PORT:-4173}:80"
+    networks:
+      - default
+      - selu-net
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    image: formulario-trazo-backend:local
+    restart: unless-stopped
+    environment:
+      ADMIN_USER: ${TRAZO_ADMIN_USER:-admin}
+      ADMIN_PASSWORD: ${TRAZO_ADMIN_PASSWORD:-admin}
+      DATA_DIR: /data
+    volumes:
+      - trazo-data:/data
+    networks:
+      - selu-net
+
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    profiles: ["tunnel"]
+    restart: unless-stopped
+    command: ["tunnel", "--url", "http://trazo:80"]
+    depends_on:
+      trazo:
+        condition: service_healthy
+
+networks:
+  selu-net:
+    external: true
+    name: selu-apps_selu-net
+
+volumes:
+  trazo-data:

@@ -212,39 +212,16 @@ form.addEventListener('submit', async (event) => {
   body.append('payload', JSON.stringify(submission));
   [...document.querySelector('#logoFiles').files, ...document.querySelector('#photoFiles').files].forEach((file) => body.append('files', file));
   try {
-    let result;
-    let successMessage;
-    if (submissionEndpoint) {
-      const response = await fetch(submissionEndpoint, {
-        method: 'POST',
-        body,
-        headers: { Accept: 'application/json' },
-      });
-      result = await response.json().catch(() => ({}));
-      if (!response.ok) throw new Error(result.error || result.detail || 'No se ha podido enviar el formulario');
-      result.reference ||= `WEB-${Date.now().toString(36).toUpperCase()}`;
-      successMessage = 'Hemos recibido toda la información. La revisaremos con calma y nos pondremos en contacto contigo.';
-    } else {
-      const reference = `LOCAL-${Date.now().toString(36).toUpperCase()}`;
-      const exportData = {
-        reference,
-        createdAt: new Date().toISOString(),
-        ...submission,
-        attachments: [...document.querySelector('#logoFiles').files, ...document.querySelector('#photoFiles').files]
-          .map(({ name, type, size }) => ({ name, type, size })),
-      };
-      const file = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
-      const downloadUrl = URL.createObjectURL(file);
-      const download = document.createElement('a');
-      download.href = downloadUrl;
-      download.download = `formulario-${submission.client.businessName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'proyecto'}.json`;
-      document.body.appendChild(download);
-      download.click();
-      download.remove();
-      URL.revokeObjectURL(downloadUrl);
-      result = { reference };
-      successMessage = 'Se ha descargado una copia del formulario. Envíanos ese archivo para que podamos revisar tu proyecto.';
-    }
+    if (!submissionEndpoint) throw new Error('El servicio de recepción no está configurado');
+    const response = await fetch(submissionEndpoint, {
+      method: 'POST',
+      body,
+      headers: { Accept: 'application/json' },
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(result.error || result.detail || 'No se ha podido enviar el formulario');
+    result.reference ||= `WEB-${Date.now().toString(36).toUpperCase()}`;
+    const successMessage = 'Hemos recibido toda la información. La revisaremos con calma y nos pondremos en contacto contigo.';
     localStorage.removeItem(draftKey);
     form.style.display = 'none';
     document.querySelector('.intro-tag').style.display = 'none';

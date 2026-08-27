@@ -7,9 +7,9 @@
     <title>Cuéntanos tu idea — Formulario de inicio</title>
     <meta name="description" content="Un breve recorrido para definir juntos la web de tu negocio." />
     <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="./assets/styles.css" />
+    <link rel="stylesheet" href="./assets/styles.css?v=20260811-7" />
   </head>
-  <body data-submit-endpoint="">
+  <body data-submit-endpoint="./api/submissions">
     <div class="paper-grain" aria-hidden="true"></div>
     <header class="topbar">
       <a class="brand" href="./" aria-label="Trazo, inicio">
@@ -21,7 +21,8 @@
         <div class="progress-track"><span id="progressBar"></span></div>
       </div>
       <div class="top-actions">
-        <a class="models-link" href="./modelos/" target="_blank" rel="noopener">Modelos y precios</a>
+        <a class="models-link services-link" href="./servicios/">Servicios</a>
+        <a class="models-link" href="./modelos/">Modelos y precios</a>
         <button class="text-button" id="saveDraft" type="button">Guardar borrador</button>
       </div>
     </header>
@@ -36,13 +37,13 @@
             <p class="lead">Cuéntanos quién eres. No hace falta tenerlo todo decidido: este recorrido sirve precisamente para descubrirlo juntos.</p>
 
             <div class="field-grid two">
-              <label class="field">Nombre del negocio <b>*</b>
+              <label class="field"><span class="field-label">Nombre del negocio <b>*</b></span>
                 <input name="businessName" autocomplete="organization" required placeholder="Ej. Casa Pepe" />
               </label>
-              <label class="field">Persona de contacto <b>*</b>
+              <label class="field"><span class="field-label">Persona de contacto <b>*</b></span>
                 <input name="contactName" autocomplete="name" required placeholder="Tu nombre" />
               </label>
-              <label class="field">Email <b>*</b>
+              <label class="field"><span class="field-label">Email <b>*</b></span>
                 <input name="email" type="email" autocomplete="email" required placeholder="hola@tunegocio.es" />
               </label>
               <label class="field">Teléfono
@@ -289,6 +290,6 @@
     </main>
 
     <div class="toast" id="toast" role="status"></div>
-    <script src="./assets/app.js" defer></script>
+    <script src="./assets/app.js?v=2" defer></script>
   </body>
 </html>

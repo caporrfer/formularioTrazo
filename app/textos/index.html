@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#f4efe6" />
+  <title>Revisión de textos · Trazo</title>
+  <meta name="description" content="Revisa y propón cambios en los textos de tu página web." />
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="./texts.css?v=20260825-1" />
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="../"><span class="mark">T<i></i></span><span><strong>TRAZO</strong><small>estudio digital</small></span></a><span>Revisión de contenidos</span></header>
+  <main>
+    <section class="access" id="access">
+      <p class="kicker">Área de clientes</p>
+      <p class="lead">Introduce el identificador que te hemos facilitado para revisar todos los textos de tu página.</p>
+      <form id="accessForm"><label for="identifier">Identificador del proyecto</label><div class="access-row"><input id="identifier" name="identifier" autocomplete="off" autocapitalize="none" spellcheck="false" required /><button>Acceder <span>→</span></button></div><p class="error" id="accessError" role="alert"></p></form>
+    </section>
+
+    <section class="editor" id="editor" hidden>
+      <div class="editor-head"><div><p class="kicker">Proyecto <span id="projectId"></span></p><h1 id="projectName"></h1><p class="lead">Modifica solo lo que quieras cambiar. Los textos originales se conservarán hasta que revisemos y apliquemos tu propuesta.</p></div><button class="quiet" id="exit" type="button">Cambiar proyecto</button></div>
+      <div class="toolbar"><label><span>Buscar un texto</span><input id="search" type="search" placeholder="Título, palabra o identificador…" /></label><div><strong id="changeCount">0 cambios</strong><span id="resultCount"></span></div></div>
+      <form id="textsForm">
+        <div id="textList" class="text-list"></div>
+        <section class="additions"><div><p class="kicker">Contenido nuevo</p><h2>¿Falta algún texto?</h2><p>Añade una propuesta e indica dónde te gustaría verla. Puedes crear tantas como necesites.</p></div><div id="additionList"></div><button class="secondary" id="addText" type="button">+ Añadir otro texto</button></section>
+        <div class="submit-bar"><div><strong id="bottomCount">0 cambios preparados</strong><small>Podrás seguir revisando antes de enviarlos.</small></div><button id="submitButton" type="submit">Enviar cambios <span>→</span></button></div>
+        <p class="error submit-error" id="submitError" role="alert"></p>
+      </form>
+    </section>
+
+    <section class="success" id="success" hidden><p class="kicker">Propuesta recibida</p><h1>Gracias por revisar<br />cada palabra.</h1><p class="lead">Hemos guardado tus cambios. Los revisaremos antes de aplicarlos a la web.</p><div class="reference"><small>Referencia</small><strong id="reference"></strong></div><button id="reviewAgain" type="button">Volver a los textos</button></section>
+  </main>
+  <script src="./texts.js?v=20260825-2"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+.git
+.env
+images
+*.tar
+*.tar.gz
+SHA256SUMS
+
