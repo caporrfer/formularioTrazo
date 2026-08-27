@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#101010" />
+    <meta name="theme-color" content="#0b0e0d" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <title>Trazo · Inicia tu proyecto</title>
@@ -12,7 +12,7 @@
     <link rel="apple-touch-icon" href="./assets/trazo-mark.svg" />
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="stylesheet" href="./assets/styles.css?v=20260811-7" />
-    <link rel="stylesheet" href="./assets/mobile-app.css?v=1" />
+    <link rel="stylesheet" href="./assets/mobile-app.css?v=2" />
   </head>
   <body data-submit-endpoint="./api/submissions">
     <div class="app-splash" aria-hidden="true"><div class="splash-lockup"><img src="./assets/trazo-mark.svg" alt="" /><span>Trazo · Project OS</span><i class="splash-line"></i></div></div>
@@ -93,9 +93,9 @@
               <legend>¿Cómo elegimos los colores?</legend>
               <p class="fieldset-help">Elige el punto de partida que mejor encaje contigo. Podrás probar y ajustar los colores justo debajo.</p>
               <div class="choice-grid three compact palette-mode-grid">
-                <label class="choice-card palette-choice"><input type="radio" name="paletteMode" value="Usar los colores del negocio" /><span class="palette-dots"><i style="--dot:#101010"></i><i style="--dot:#eeeeee"></i><i style="--dot:#8a8380"></i></span><strong>Mantener mis colores</strong><small>Partimos de vuestra identidad actual</small></label>
-                <label class="choice-card palette-choice"><input type="radio" name="paletteMode" value="Crear una paleta nueva" /><span class="palette-dots"><i style="--dot:#ee6018"></i><i style="--dot:#101010"></i><i style="--dot:#eeeeee"></i></span><strong>Explorar algo nuevo</strong><small>Buscamos una combinación con contraste</small></label>
-                <label class="choice-card palette-choice"><input type="radio" name="paletteMode" value="Necesitamos asesoramiento" /><span class="palette-dots"><i style="--dot:#a0ca92"></i><i style="--dot:#1d1a18"></i><i style="--dot:#fafafa"></i></span><strong>Quiero asesoramiento</strong><small>Elegimos una paleta legible juntos</small></label>
+                <label class="choice-card palette-choice"><input type="radio" name="paletteMode" value="Usar los colores del negocio" /><span class="palette-dots"><i style="--dot:#0b0e0d"></i><i style="--dot:#f4f1e9"></i><i style="--dot:#aab2ae"></i></span><strong>Mantener mis colores</strong><small>Partimos de vuestra identidad actual</small></label>
+                <label class="choice-card palette-choice"><input type="radio" name="paletteMode" value="Crear una paleta nueva" /><span class="palette-dots"><i style="--dot:#ff7849"></i><i style="--dot:#0b0e0d"></i><i style="--dot:#f4f1e9"></i></span><strong>Explorar algo nuevo</strong><small>Buscamos una combinación con contraste</small></label>
+                <label class="choice-card palette-choice"><input type="radio" name="paletteMode" value="Necesitamos asesoramiento" /><span class="palette-dots"><i style="--dot:#b7e4c7"></i><i style="--dot:#191f1c"></i><i style="--dot:#fffdf7"></i></span><strong>Quiero asesoramiento</strong><small>Elegimos una paleta legible juntos</small></label>
               </div>
             </fieldset>
             <div class="palette-builder">
@@ -104,14 +104,14 @@
                 <small>También puedes personalizarla</small>
               </div>
               <div class="palette-presets">
-                <label><input type="radio" name="colorPalette" value="Obsidian" checked /><span class="preset-colors"><i style="--swatch:#101010"></i><i style="--swatch:#eeeeee"></i></span><strong>Obsidian / Bone</strong><small>Oscura y precisa</small></label>
-                <label><input type="radio" name="colorPalette" value="Signal" /><span class="preset-colors"><i style="--swatch:#ee6018"></i><i style="--swatch:#101010"></i></span><strong>Signal / Obsidian</strong><small>Directa y enérgica</small></label>
-                <label><input type="radio" name="colorPalette" value="Metric" /><span class="preset-colors"><i style="--swatch:#a0ca92"></i><i style="--swatch:#101010"></i></span><strong>Metric / Obsidian</strong><small>Clara y contemporánea</small></label>
-                <label><input type="radio" name="colorPalette" value="Carbon" /><span class="preset-colors"><i style="--swatch:#1d1a18"></i><i style="--swatch:#fafafa"></i></span><strong>Carbon / Chalk</strong><small>Neutral y elegante</small></label>
+                <label><input type="radio" name="colorPalette" value="Obsidian" checked /><span class="preset-colors"><i style="--swatch:#0b0e0d"></i><i style="--swatch:#f4f1e9"></i></span><strong>Obsidian / Bone</strong><small>Oscura y precisa</small></label>
+                <label><input type="radio" name="colorPalette" value="Signal" /><span class="preset-colors"><i style="--swatch:#ff7849"></i><i style="--swatch:#0b0e0d"></i></span><strong>Signal / Obsidian</strong><small>Directa y enérgica</small></label>
+                <label><input type="radio" name="colorPalette" value="Metric" /><span class="preset-colors"><i style="--swatch:#b7e4c7"></i><i style="--swatch:#0b0e0d"></i></span><strong>Metric / Obsidian</strong><small>Clara y contemporánea</small></label>
+                <label><input type="radio" name="colorPalette" value="Carbon" /><span class="preset-colors"><i style="--swatch:#191f1c"></i><i style="--swatch:#fffdf7"></i></span><strong>Carbon / Chalk</strong><small>Neutral y elegante</small></label>
               </div>
               <div class="color-row">
-                <label class="color-control" for="primaryColor"><span><small>Color principal</small><strong id="primaryColorValue">#101010</strong></span><input id="primaryColor" type="color" name="primaryColor" value="#101010" /></label>
-                <label class="color-control" for="secondaryColor"><span><small>Color de contraste</small><strong id="secondaryColorValue">#EEEEEE</strong></span><input id="secondaryColor" type="color" name="secondaryColor" value="#eeeeee" /></label>
+                <label class="color-control" for="primaryColor"><span><small>Color principal</small><strong id="primaryColorValue">#0b0e0d</strong></span><input id="primaryColor" type="color" name="primaryColor" value="#0b0e0d" /></label>
+                <label class="color-control" for="secondaryColor"><span><small>Color de contraste</small><strong id="secondaryColorValue">#EEEEEE</strong></span><input id="secondaryColor" type="color" name="secondaryColor" value="#f4f1e9" /></label>
               </div>
               <p class="palette-hint">Estos colores son un punto de partida; los afinaremos juntos antes de diseñar la web.</p>
             </div>

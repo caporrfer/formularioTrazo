@@ -1,4 +1,4 @@
-const CACHE = 'trazo-app-v1';
+const CACHE = 'trazo-app-v2';
 const ASSETS = ['./', './assets/styles.css', './assets/app.js', './assets/mobile-app.css', './assets/trazo-mark.svg', './manifest.webmanifest'];
 self.addEventListener('install', event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting())));
 self.addEventListener('activate', event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key)))).then(() => self.clients.claim())));
