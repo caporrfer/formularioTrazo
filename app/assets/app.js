@@ -30,10 +30,16 @@ const showToast = (message) => {
 const value = (name) => form.elements[name]?.value?.trim() || '';
 const checkedValues = (name) => [...form.querySelectorAll(`[name="${name}"]:checked`)].map((input) => input.value);
 const palettes = {
-  Terracota: ['#b6533b', '#25352f'],
-  Natural: ['#6f7551', '#3b4432'],
-  Atlántica: ['#26465a', '#8bb4bf'],
-  Editorial: ['#724137', '#d6b878'],
+  Obsidian: ['#101010', '#eeeeee'],
+  Signal: ['#ee6018', '#101010'],
+  Metric: ['#a0ca92', '#101010'],
+  Carbon: ['#1d1a18', '#fafafa'],
+};
+
+const contrastText = (hex) => {
+  const color = hex.replace('#', '');
+  const [r, g, b] = [0, 2, 4].map((index) => parseInt(color.slice(index, index + 2), 16) / 255).map((channel) => channel <= .03928 ? channel / 12.92 : ((channel + .055) / 1.055) ** 2.4);
+  return (.2126 * r + .7152 * g + .0722 * b) > .179 ? '#101010' : '#eeeeee';
 };
 
 const syncColorControls = () => {
@@ -94,8 +100,10 @@ const updatePreview = () => {
   previewName.textContent = value('businessName') || 'Tu negocio';
   const story = value('story');
   previewTagline.textContent = story ? `${story.slice(0, 74)}${story.length > 74 ? '…' : ''}` : 'Una historia que merece ser contada.';
-  preview.style.setProperty('--preview-primary', value('primaryColor') || '#b6533b');
-  preview.style.setProperty('--preview-secondary', value('secondaryColor') || '#25352f');
+  const previewPrimary = value('primaryColor') || '#101010';
+  preview.style.setProperty('--preview-primary', previewPrimary);
+  preview.style.setProperty('--preview-secondary', value('secondaryColor') || '#eeeeee');
+  preview.style.setProperty('--preview-paper', contrastText(previewPrimary));
   [...preview.classList].filter((name) => name.startsWith('style-')).forEach((name) => preview.classList.remove(name));
   const firstStyle = checkedValues('styles')[0];
   if (firstStyle) preview.classList.add(`style-${firstStyle}`);
