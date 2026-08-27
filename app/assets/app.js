@@ -30,16 +30,16 @@ const showToast = (message) => {
 const value = (name) => form.elements[name]?.value?.trim() || '';
 const checkedValues = (name) => [...form.querySelectorAll(`[name="${name}"]:checked`)].map((input) => input.value);
 const palettes = {
-  Obsidian: ['#0b0e0d', '#f4f1e9'],
-  Signal: ['#ff7849', '#0b0e0d'],
-  Metric: ['#b7e4c7', '#0b0e0d'],
-  Carbon: ['#191f1c', '#fffdf7'],
+  Sky: ['#c8d8e0', '#2e3642'],
+  Citrus: ['#dddc8c', '#1d1d1f'],
+  Starlight: ['#f0e4d3', '#596680'],
+  Blush: ['#e8d0d0', '#2e3642'],
 };
 
 const contrastText = (hex) => {
   const color = hex.replace('#', '');
   const [r, g, b] = [0, 2, 4].map((index) => parseInt(color.slice(index, index + 2), 16) / 255).map((channel) => channel <= .03928 ? channel / 12.92 : ((channel + .055) / 1.055) ** 2.4);
-  return (.2126 * r + .7152 * g + .0722 * b) > .179 ? '#0b0e0d' : '#f4f1e9';
+  return (.2126 * r + .7152 * g + .0722 * b) > .179 ? '#1d1d1f' : '#ffffff';
 };
 
 const syncColorControls = () => {
@@ -100,9 +100,9 @@ const updatePreview = () => {
   previewName.textContent = value('businessName') || 'Tu negocio';
   const story = value('story');
   previewTagline.textContent = story ? `${story.slice(0, 74)}${story.length > 74 ? '…' : ''}` : 'Una historia que merece ser contada.';
-  const previewPrimary = value('primaryColor') || '#0b0e0d';
+  const previewPrimary = value('primaryColor') || '#c8d8e0';
   preview.style.setProperty('--preview-primary', previewPrimary);
-  preview.style.setProperty('--preview-secondary', value('secondaryColor') || '#f4f1e9');
+  preview.style.setProperty('--preview-secondary', value('secondaryColor') || '#2e3642');
   preview.style.setProperty('--preview-paper', contrastText(previewPrimary));
   [...preview.classList].filter((name) => name.startsWith('style-')).forEach((name) => preview.classList.remove(name));
   const firstStyle = checkedValues('styles')[0];
